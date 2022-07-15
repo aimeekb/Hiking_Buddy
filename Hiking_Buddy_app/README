@@ -1,0 +1,11 @@
+To run the web app, run the following command to set up the 'node_modules' folder for the project:
+
+   npm i
+   
+This will go through and install project dependencies based on the package.json fils. 
+
+Once the node_modules folder is build, run the following to launch the app:
+
+  node app.js
+  
+You should see a line stating: 'sever running on... <port#>
