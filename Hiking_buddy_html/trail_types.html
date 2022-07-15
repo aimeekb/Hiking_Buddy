@@ -1,0 +1,131 @@
+<html>
+<head>
+<title>Trail Types</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+   
+<script language="JavaScript">
+		function showform(dowhat) {
+			/*
+			* four DIVS: browse, insert, update, delete
+			* this function sets one visible the others not
+			*/
+			if (dowhat == 'insert'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'update'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'delete'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'block';
+			}
+      else if (dowhat == 'all'){
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'block';
+			}
+			else { //by default display browse
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+		}
+    function newTrailType() { showform('insert'); }
+    function updateTrailType(id) { showform('update'); }
+    function deleteTrailType(id) { showform ('delete'); }
+    function browseTrailType() { showform ('browse'); }
+    function showAll() { showform ('all'); }
+</script>
+</head>
+
+<body onload="browseTrailType()">
+<h1>Trail Types</h1>
+[ <a href="trails.html">Trails</a> | <a href="users.html">Users</a> | <a href="packing_list.html">Packing Lists</a> | <a href="hikes.html">Hikes</a> ]
+<p></p>
+<div id = "browse">
+<table class="trailType">
+  <thead>
+    <tr>
+      <th><a href="#" onClick="newTrailType()">New</a></th>
+      <th></th>
+      <th>Trail Type ID</th>
+      <th>Trail Type Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#" onClick="updateTrailType('this.trailTypeID')">Edit</a></td>
+      <td><a href="#" onclick="deleteTrail('this.trailTypeID')">Delete</a></td>
+      <td align="left">1</td>
+      <td> Mountainous-Day Hike</td>
+    </tr>
+    <tr>
+      <tr>
+        <td><a href="#" onClick="updateTrailType('this.trailTypeID')">Edit</a></td>
+        <td><a href="#" onclick="deleteTrail('this.trailTypeID')">Delete</a></td>
+        <td align="left">2</td>
+        <td>Mountainous-Multi Day Hike</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateTrailType('this.trailTypeID')">Edit</a></td>
+        <td><a href="#" onclick="deleteTrail('this.trailTypeID')">Delete</a></td>
+        <td>3</td>
+        <td>Arid-Day Hike</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateTrailType('this.trailTypeID')">Edit</a></td>
+        <td><a href="#" onclick="deleteTrail('this.trailTypeID')">Delete</a></td>
+        <td>4</td>
+        <td>Arid-Multi Day Hike</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateTrailType('this.trailTypeID')">Edit</a></td>
+        <td><a href="#" onclick="deleteTrail('this.trailTypeID')">Delete</a></td>
+        <td>5</td>
+        <td>Long Distance Trek</td>
+      </tr>
+    </tbody>
+   </table>
+  </div>
+<p></p>
+  <!-- Add Trail Type Form -->
+  <form class="trailType" method="POST" id="addTrailType">
+    <fieldset>
+    <legend><strong>Add Trail Type</strong></legend>
+    
+    <div class="trailType">
+      <label class="col-md-4 control-label" for="selectbasic">Trail Type ID</label>
+        <select id="selectbasic" name="selectbasic" class="form-control">
+          <option value="1">&nbsp;</option>
+          <option value="2">6</option>
+          <option value="3">7</option>
+          <option value="4">8</option>
+          <option value="5">9</option>
+        </select>&nbsp;&nbsp;&nbsp;&nbsp;
+      <label class="col-md-4 control-label" for="textinput">Trail Description</label>  
+      <input type="text" name="fname"> 
+    </div>
+    <p></p>
+    <div class="col-md-8">
+        <button style="background-color:green; border-color:white; color:white" id="button1id" 
+          name="button1id" class="btn btn-success">Add Trail Type</button>
+        <button style="background-color:red; border-color:white; color:white"id="button2id" 
+          name="button2id" class="btn btn-danger" onClick="browseTrailType()">Cancel</button>
+     </div>
+    </div>
+   </fieldset>
+  </form>  
+ </body>
+</html>
+
+

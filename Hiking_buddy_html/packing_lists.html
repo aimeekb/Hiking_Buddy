@@ -1,0 +1,144 @@
+<html>
+<head>
+<title>Packing Lists</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+   
+<script language="JavaScript">
+		function showform(dowhat) {
+			/*
+			* four DIVS: browse, insert, update, delete
+			* this function sets one visible the others not
+			*/
+			if (dowhat == 'insert'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'update'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'delete'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'block';
+			}
+      else if (dowhat == 'all'){
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'block';
+			}
+			else { //by default display browse
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+		}
+    function newPackingList() { showform('insert'); }
+    function updatePackingList(id) { showform('update'); }
+    function deletePackingList(id) { showform ('delete'); }
+    function browsePackingList() { showform ('browse'); }
+    function showAll() { showform ('all'); }
+</script>
+</head>
+
+<body onload="browsePackingList()">
+<h1>Packing Lists</h1>
+[ <a href="trails.html">Trails</a> | <a href="users.html">Users</a> | <a href="packing_list.html">Packing Lists</a> | <a href="hikes.html">Hikes</a> ]
+<p></p>
+
+<div id = "browse">
+<table class="packingList">
+  <thead>
+    <tr>
+      <th><a href="#" onClick="newPackingList()">New</a></th>
+      <th></th>
+      <th>Packing List ID</th>
+      <th>Trail Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#" onClick="updatePackingList('this.PackingListID')">Edit</a></td>
+      <td><a href="#" onclick="deleteTrail('this.PackingListID')">Delete</a></td>
+      <td align="left">1</td>
+      <td>1 - Mountainous-Day</td>
+    </tr>
+    <tr>
+      <td><a href="#" onClick="updatePackingList('this.PackingListID')">Edit</a></td>
+      <td><a href="#" onclick="deleteTrail('this.PackingListID')">Delete</a></td>
+      <td align="left">2</td>
+      <td>2 - Mountainous-Multi Day</td>
+    </tr>
+    <tr>
+      <tr>
+        <td><a href="#" onClick="updatePackingList('this.PackingListID')">Edit</a></td>
+        <td><a href="#" onclick="deleteTrail('this.PackingListID')">Delete</a></td>
+        <td align="left">3</td>
+        <td>3 - Arid-Day</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updatePackingList('this.PackingListID')">Edit</a></td>
+        <td><a href="#" onclick="deleteTrail('this.PackingListID')">Delete</a></td>
+        <td align="left">4</td>
+        <td>4 - Arid-Multi Day</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updatePackingList('this.PackingListID')">Edit</a></td>
+        <td><a href="#" onclick="deleteTrail('this.PackingListID')">Delete</a></td>
+        <td>5</td>
+        <td>5 - Long Distance Trek</td>
+      </tr>
+    </tbody>
+   </table>
+  </div>
+<p></p>
+
+  <!-- Add Packing List Form -->
+  <form class="packingList" method="POST" id="addPackingList">
+    <fieldset>
+    <legend><strong>Add Packing List</strong></legend>
+    
+    <div class="packingList">
+      <label class="packingList" for="selectbasic"><strong>Packing List ID</strong></label>&nbsp;
+        <select id="selectbasic" name="selectbasic" class="form-control">
+          <option value="1">&nbsp;</option>
+          <option value="2">6</option>
+          <option value="3">7</option>
+          <option value="4">8</option>
+          <option value="5">9</option>
+          <option value="5">10</option>
+        </select>&nbsp;&nbsp;&nbsp;&nbsp;
+        <label class="packingList" for="selectbasic"><strong>Trail Type</strong></label>
+          <select id="selectbasic" name="selectbasic" class="form-control">
+            <option value="1">&nbsp;</option>
+            <option value="2">1 - Mountainous-Day</option>
+            <option value="3">2 - Mountainous-Multi Day</option>
+            <option value="4">3 - Arid-Day</option>
+            <option value="5">4 - Arid-Multi Day</option>
+            <option value="6">5 - Long Distance Trek</option>
+          </select>
+        </div>
+      </div>
+    
+    <div class="packingList">
+      <label class="col-md-4 control-label" for="button1id"></label><BR>
+      <div class="col-md-8">
+        <button style="background-color:green; border-color:white; color:white" id="button1id" 
+          name="button1id" class="btn btn-success">Add Packing List</button>
+        <button style="background-color:red; border-color:white; color:white"id="button2id" 
+          name="button2id" class="btn btn-danger" onClick="browsePackingList()">Cancel</button>
+     </div>
+    </div>
+   </fieldset>
+  </form>  
+ </body>
+</html>
+
+

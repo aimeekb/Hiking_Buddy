@@ -1,0 +1,145 @@
+<html>
+<head>
+<title>Inventory Items</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+   
+<script language="JavaScript">
+		function showform(dowhat) {
+			/*
+			* four DIVS: browse, insert, update, delete
+			* this function sets one visible the others not
+			*/
+			if (dowhat == 'insert'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'update'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'delete'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'block';
+			}
+      else if (dowhat == 'all'){
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'block';
+			}
+			else { //by default display browse
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+		}
+    function newInventoryItems() { showform('insert'); }
+    function updateInventoryItems(id) { showform('update'); }
+    function deleteInventoryItems(id) { showform ('delete'); }
+    function browseInventoryItems() { showform ('browse'); }
+    function showAll() { showform ('all'); }
+</script>
+</head>
+
+<body onload="browseInventoryItems()">
+<h1>Inventory Items</h1>
+[ <a href="trails.html">Trails</a> | <a href="users.html">Users</a> | <a href="packing_list.html">Packing Lists</a> | <a href="hikes.html">Hikes</a> ]
+<p></p>
+<div id = "browse">
+<table class="inventoryItems">
+  <thead>
+    <tr>
+      <th><a href="#" onClick="newInventoryItems()">New</a></th>
+      <th></th>
+      <th>Item ID</th>
+      <th>Item Name</th>
+      <th>Item Description</th>
+      <th>Item Weight (lbs)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#" onClick="updateInventoryItems('this.inventoryItem')">Edit</a></td>
+      <td><a href="#" onclick="deleteInventoryItems('this.inventoryItem')">Delete</a></td>
+      <td>1</td>
+      <td>Osprey Exos 58</td>
+      <td>UltraLite pack, 58 liters</td>
+      <td>2.6</td>
+    </tr>
+    <tr>
+        <td><a href="#" onClick="updateInventoryItems('this.inventoryItem')">Edit</a></td>
+        <td><a href="#" onclick="deleteInventoryItems('this.inventoryItem')">Delete</a></td>
+        <td>2</td>
+        <td>Big Agnes Fly Creek UL2</td>
+        <td>UltraLite 2 person tent</td>
+        <td>2.1</td>
+      </tr>
+    <tr>
+      <tr>
+        <td><a href="#" onClick="updateInventoryItems('this.inventoryItem')">Edit</a></td>
+        <td><a href="#" onclick="deleteInventoryItems('this.inventoryItem')">Delete</a></td>
+        <td>3</td>
+        <td>NeoAir XTherm MAX</td>
+        <td>Sleeping pad: 6.9 R-Value</td>
+        <td>1.1</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateInventoryItems('this.inventoryItem')">Edit</a></td>
+        <td><a href="#" onclick="deleteInventoryItems('this.inventoryItem')">Delete</a></td>
+        <td>4</td>
+        <td>North Face FutureLite Boots</td>
+        <td>Hiking Boots</td>
+        <td>0.9</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateInventoryItems('this.inventoryItem')">Edit</a></td>
+        <td><a href="#" onclick="deleteInventoryItems('this.inventoryItem')">Delete</a></td>
+        <td>5</td>
+        <td>Arcteryx Atom AR Hoodie</td>
+        <td>UltraLite rain jacket</td>
+        <td>1.6</td>
+      </tr>
+    </tbody>
+   </table>
+  </div>
+<p></p>
+
+  <!-- Add Packing List Details Form -->
+  <form class="inventoryItems" method="POST" id="addInventoryItems">
+    <fieldset>
+    <legend><strong>Add Inventory Items</strong></legend>
+    
+    <div class="inventoryItems">
+      <label class="col-md-4 control-label" for="selectbasic">Inventory Item ID</label>
+        <select id="selectbasic" name="selectbasic" class="form-control">
+          <option value="1">&nbsp;</option>
+          <option value="2">6</option>
+          <option value="3">7</option>
+          <option value="4">8</option>
+          <option value="5">9</option>
+        </select>&nbsp;&nbsp;&nbsp;&nbsp;
+      <label class="col-md-4 control-label" for="textinput">Item Name</label>  
+      <input type="text" name="inventoryItem">&nbsp;&nbsp;&nbsp;&nbsp;
+      <label class="col-md-4 control-label" for="textinput">Item Description</label>  
+      <input type="text" name="itemDescription"> &nbsp;&nbsp;&nbsp;&nbsp;
+      <label class="col-md-4 control-label" for="textinput">Item Weight (lbs)</label>  
+      <input type="text" name="itemWeight"> 
+    </div>
+    <p></p>
+        <button style="background-color:green; border-color:white; color:white" id="button1id" 
+          name="button1id" class="btn btn-success">Add Inventory Item</button>
+        <button style="background-color:red; border-color:white; color:white"id="button2id" 
+          name="button2id" class="btn btn-danger" onClick="browseTrailType()">Cancel</button>
+   </fieldset>
+  </form>  
+ </body>
+</html>
+
+
