@@ -1,0 +1,69 @@
+<!-- index.hbs -->
+<h1>This is the Users Page!</h1>
+<p>Here will be browse, other forms and stuff</p>
+
+<a href="/">Home</a>|
+<a href="users">Users</a>|
+<a href="trails">Trails</a> | 
+<a href="trail_types">Trail Types</a> | 
+<a href="inventory_items">Inventory Items</a><br>
+<a href="packing_lists">Packing Lists</a> | 
+<a href="packing_list_details">Packing List Details</a> | 
+<a href="hikes">Completed Hikes</a>&nbsp;<br>
+
+<br>
+
+{{!-- Create a table --}}
+<table id = "users-table">
+
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row, print the id, fname, lname, homeworld and age, in order --}}
+        {{#each data}}
+        <tr>
+            <td>{{this.id_user}}</td>
+            <td>{{this.first_name}}</td>
+            <td>{{this.last_name}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.user_location}}</td>
+            <td>{{this.user_dist_total}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<h2>Adding Data using an HTML form</h2>
+<p>To add a new user, please enter their information below nad click `Submit`!</p>
+<form id="add-user-form" method="POST" action="/add-user-form">
+    <label for="input-first_name">First Name: </label>
+    <input type="text" name="input-first_name" id="input-first_name">
+    
+    <label for="input-last_name">Last Name: </label>
+    <input type="text" name="input-last_name" id="input-last_name">
+
+    <label for="input-email">email: </label>
+    <input type="text" name="input-email" id="input-email">
+
+    <label for="input-user_location">City: </label>
+    <input type="text" name="input-user_location" id="input-user_location">
+
+    <input type="submit">
+</form>
+
+
+
