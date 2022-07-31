@@ -60,7 +60,7 @@ FROM Trails INNER JOIN Trail_types ON Trails.id_trail_type = Trail_types.id_trai
 
 -- CREATE (INSERT)
 -- query to populate dropdown
-SELECT id_trail_type, trail_type_description FROM Trail_types
+SELECT id_trail_type, trail_type_description FROM Trail_types;
 
 INSERT INTO Trails(
     id_trail_type,
@@ -85,7 +85,7 @@ FROM Trails INNER JOIN Trail_types ON Trails.id_trail_type = Trail_types.id_trai
 WHERE id_trail = :id_trail_selected_from_browse_page;
 
 -- query to populate dropdown
-SELECT id_trail_type, trail_type_description FROM Trail_types
+SELECT id_trail_type, trail_type_description FROM Trail_types;
 
 -- for the actual update
 UPDATE Trails SET
