@@ -18,8 +18,6 @@
     {{!-- Header section --}}
     <thead>
 
-        {{!-- For just the first row, we print each key of the row object as a header cell so we
-        know what each column means when the page renders --}}
         <tr>
             {{#each data.[0]}}
             <th>
@@ -32,7 +30,6 @@
     {{!-- Body section --}}
     <tbody>
 
-        {{!-- For each row, print the id, fname, lname, homeworld and age, in order --}}
         {{#each data}}
         <tr>
             <td>{{this.ID}}</td>
@@ -102,7 +99,7 @@
 <h2>Delete Trail</h2>
 <form id="delete-trail-form" method="POST" action="/delete-trail-form">
 
-    <label for="input-id_trail">Type: </label>
+    <label for="input-id_trail">Trail ID: </label>
     <input type="number" name="input-id_trail" id="input-id_trail">
 
     <input type="submit">
