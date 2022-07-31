@@ -1,0 +1,404 @@
+/* pages formatting */
+body.index{
+  background-color: #313132;
+  min-height: 100vh;
+  text-align: center;
+  align-items: center;
+  font-family: serif;
+  justify-content: center;
+  font-size: 2.441rem;
+  color: rgb(62, 96, 55);
+  margin:0em;
+  padding: 0em;
+}
+a{
+  color: rgb(12, 165, 189);
+}
+
+#h1, #h2{
+  color:rgb(62, 96, 55);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+/* Users Table Formatting */
+
+body.users{
+  background-color: #313132;
+  color: white;
+  margin:0em;
+  padding: 0em
+}
+
+form.users {
+    width: 100%;
+    background-color: #000000;
+    border-collapse: collapse;
+    border-width: 2px;
+    border-style: solid;
+    color: #f77b00;
+  }
+  
+  form.users td, .form.users th {
+    border-width: 2px;
+    border-color: #f77b00;
+    border-style: solid;
+    padding: 3px;
+  }
+  
+  form.users thead {
+    background-color: #242322;
+  }
+
+.container {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+label.users {
+  color: #f77b00;
+  margin: auto;
+}
+
+.item {
+    width: 10em;
+}
+
+/* Users table formatting */
+
+table.users {
+  width: 100%;
+  background-color: #000000;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #f77b00;
+  border-style: solid;
+  color: #ffffff;
+}
+
+table.users td, table.users th {
+  border-width: 2px;
+  border-color: #f77b00;
+  border-style: solid;
+  padding: 3px;
+}
+
+table.users thead {
+  background-color: #f77b00;
+}
+
+/* Hikes formatting */
+
+body.hikes{
+  background-color: #313132;
+  color: white;
+  margin:0em;
+  padding: 0em
+}
+
+table.hikes {
+  width: 100%;
+  background-color: #212020;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #8c1f1f;
+  border-style: solid;
+  color: #ffffff;
+}
+
+table.hikes td, table.hikes th {
+  border-width: 2px;
+  border-color: #8c1f1f;
+  border-style: solid;
+  padding: 3px;
+}
+
+table.hikes thead {
+  background-color: #8c1f1f;
+}
+
+/* Trails Form style formatting */
+
+body.trails{
+  background-color: #313132;
+  color: white;
+  margin:0em;
+  padding: 0em
+}
+
+form.trails {
+  width: 100%;
+  background-color: #212020;
+  border-collapse: collapse;
+  border-width: 3px;
+  border-color: #1c6d1c;
+  border-style: solid;
+  color: #fefcfc;
+}
+
+form.trails td, form.trails th {
+  border-width: 3px;
+  border-color: #1c6d1c;
+  border-style: solid;
+  padding: 3px;
+}
+
+form.trails thead {
+  background-color: #1c6d1c;
+  color: #040404;
+}
+
+/* Trails Table formatting */
+
+table.trails {
+  width: 100%;
+  background-color: #212020;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #ffffff;
+  border-style: solid;
+  color: #fefcfc;
+}
+
+table.trails td, table.trails th {
+  border-width: 2px;
+  border-color: #1c6d1c;
+  border-style: solid;
+  padding: 3px;
+}
+
+table.trails thead {
+  background-color: #1c6d1c;
+  color: #040404;
+}
+
+/* Packing list form formatting */
+
+body.packing_lists{
+  background-color: #313132;
+  color: white;
+  margin:0em;
+  padding: 0em
+}
+
+form.packing_lists {
+  width: 100%;
+  background-color: #212020;
+  border-collapse: collapse;
+  border-width: 3px;
+  border-color: #005e70;
+  border-style: solid;
+  color: #fefcfc;
+}
+
+form.packing_lists td, form.packing_lists th {
+  border-width: 3px;
+  border-color: #005e70;
+  border-style: solid;
+  padding: 3px;
+}
+
+form.packing_lists thead {
+  background-color: #005e70;
+  color: #040404;
+}
+
+label.packing_lists {
+  color: #005e70;
+}
+
+table.packing_lists {
+  width: 100%;
+  background-color: #212020;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #005e70;
+  border-style: solid;
+  color: #fefcfc;
+}
+
+table.packing_lists td, table.packing_lists th {
+  border-width: 2px;
+  border-color: #005e70;
+  border-style: solid;
+  padding: 3px;
+}
+
+table.packing_lists thead {
+  background-color: #005e70;
+  color: #040404;
+}
+
+/* Trail Types form and label Formatting */
+
+body.trail_types{
+  background-color: #313132;
+  color: white;
+  margin:0em;
+  padding: 0em
+}
+
+form.trail_types {
+  width: 100%;
+  background-color: #212020;
+  border-collapse: collapse;
+  border-width: 3px;
+  border-color: #0bcb9e;
+  border-style: solid;
+  color: #fefcfc;
+}
+
+form.trail_types td, form.trail_types th {
+  border-width: 3px;
+  border-color: #0bcb9e;
+  border-style: solid;
+  padding: 3px;
+}
+
+form.trail_types thead {
+  background-color: #0bcb9e;
+  color: #040404;
+}
+
+label.trail_types {
+  color: #0bcb9e;
+}
+
+table.trail_types {
+  width: 100%;
+  background-color: #212020;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #0bcb9e;
+  border-style: solid;
+  color: #fefcfc;
+}
+
+table.trail_types td, table.trail_types th {
+  border-width: 2px;
+  border-color: #0bcb9e;
+  border-style: solid;
+  padding: 3px;
+}
+
+table.trail_types thead {
+  background-color: #0bcb9e;
+  color: #040404;
+}
+
+/* Packing List Details form and label Formatting */
+
+body.packing_list_details{
+  background-color: #313132;
+  color: white;
+  margin:0em;
+  padding: 0em
+}
+
+form.packing_list_details {
+  width: 100%;
+  background-color: #212020;
+  border-collapse: collapse;
+  border-width: 3px;
+  border-color: #762aa1;
+  border-style: solid;
+  color: #fefcfc;
+}
+
+form.packing_list_details td, form.packing_list_details th {
+  border-width: 3px;
+  border-color: #762aa1;
+  border-style: solid;
+  padding: 3px;
+}
+
+form.packing_list_details thead {
+  background-color: #762aa1;
+  color: #040404;
+}
+
+label.packing_list_details {
+  color: #762aa1;
+}
+
+table.packing_list_details {
+  width: 100%;
+  background-color: #212020;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #762aa1;
+  border-style: solid;
+  color: #fefcfc;
+}
+
+table.packing_list_details td, table.packing_list_details th {
+  border-width: 2px;
+  border-color: #762aa1;
+  border-style: solid;
+  padding: 3px;
+}
+
+table.packing_list_details thead {
+  background-color: #762aa1;
+  color: #ffffff;
+}
+
+/* Inventory Items form and label Formatting */
+
+body.inventory_items{
+  background-color: #313132;
+  color: white;
+  margin:0em;
+  padding: 0em
+}
+
+form.inventory_items {
+  width: 100%;
+  background-color: #212020;
+  border-collapse: collapse;
+  border-width: 3px;
+  border-color: #19245a;
+  border-style: solid;
+  color: #fefcfc;
+}
+
+form.inventory_items td, form.inventory_items th {
+  border-width: 3px;
+  border-color: #19245a;
+  border-style: solid;
+  padding: 3px;
+}
+
+form.inventory_items thead {
+  background-color: #19245a;
+  color: #040404;
+}
+
+label.inventory_items {
+  color: #19245a;
+}
+
+table.inventory_items{
+  width: 100%;
+  background-color: #212020;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #19245a;
+  border-style: solid;
+  color: #fefcfc;
+}
+
+table.inventory_items td, table.inventory_items th {
+  border-width: 2px;
+  border-color: #19245a;
+  border-style: solid;
+  padding: 3px;
+}
+
+table.inventory_items thead {
+  background-color: #19245a;
+  color: #ffffff;
+}
+
