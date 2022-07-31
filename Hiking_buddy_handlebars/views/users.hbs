@@ -1,6 +1,5 @@
 <!-- index.hbs -->
-<h1>This is the Users Page!</h1>
-<p>Here will be browse, other forms and stuff</p>
+<h1>Users</h1>
 
 <a href="/">Home</a>|
 <a href="users">Users</a>|
@@ -33,22 +32,21 @@
     {{!-- Body section --}}
     <tbody>
 
-        {{!-- For each row, print the id, fname, lname, homeworld and age, in order --}}
+        {{!-- For each row, print the id, etc. --}}
         {{#each data}}
         <tr>
-            <td>{{this.id_user}}</td>
-            <td>{{this.first_name}}</td>
-            <td>{{this.last_name}}</td>
+            <td>{{this.ID}}</td>
+            <td>{{this.First}}</td>
+            <td>{{this.Last}}</td>
             <td>{{this.email}}</td>
-            <td>{{this.user_location}}</td>
-            <td>{{this.user_dist_total}}</td>
+            <td>{{this.City}}</td>
+            <td>{{this.TotalMiles}}</td>
         </tr>
         {{/each}}
     </tbody>
 </table>
 
-<h2>Adding Data using an HTML form</h2>
-<p>To add a new user, please enter their information below nad click `Submit`!</p>
+<h2>Add User</h2>
 <form id="add-user-form" method="POST" action="/add-user-form">
     <label for="input-first_name">First Name: </label>
     <input type="text" name="input-first_name" id="input-first_name">
@@ -66,4 +64,43 @@
 </form>
 
 
+<h2>Update Trail</h2>
+<form id="update-user-form" method="POST" action="/update-user-form">
 
+    <label for="input-id_user">ID: </label>
+    <input type="number" name="input-id_user" id="input-id_user">
+    
+    <label for="input-first_name">First Name: </label>
+    <input type="text" name="input-first_name" id="input-first_name">
+
+    <label for="input-last_name">Last Name: </label>
+    <input type="text" name="input-last_name" id="input-last_name">
+    
+    <label for="input-email">email: </label>
+    <input type="text" name="input-email" id="input-email">
+
+    <label for="input-trail_type">Type: </label>
+    <input type="number" name="input-trail_type" id="input-trail_type">
+
+    {{!-- <select name="input-trail_type" id="input-trail_type">
+        <option value="">Select a Trail Type</option>
+        {{#each trail_types}}
+        <option value="{{this.id_trail_type}}">{{this.trail_type_description}}</option>
+        {{/each}}
+    </select> --}}
+
+    <label for="input-trail_distance">"Distance  [10th mi: e.g. xxxx.x]: </label>
+    <input type="text" name="input-trail_distance" id="input-trail_distance">
+
+    <input type="submit">
+</form>
+
+
+<h2>Delete User</h2>
+<form id="delete-user-form" method="POST" action="/delete-user-form">
+
+    <label for="input-id_user">User ID: </label>
+    <input type="number" name="input-id_user" id="input-id_user">
+
+    <input type="submit">
+</form>
