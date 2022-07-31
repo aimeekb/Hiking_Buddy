@@ -72,6 +72,32 @@ app.post('/add-user-form', function(req, res){
     })
 });
 
+app.post('/delete-user-form', function(req, res){
+
+    let data = req.body;
+    let ID = parseInt(data['input-id_user']);
+    
+    // if (isNaN(type))
+    // {
+    //     type = 'NULL'
+    // }
+
+
+    query1 = `DELETE FROM Users WHERE id_user = '${data['input-id_user']}';`; 
+        
+    db.pool.query(query1, function(error, rows, fields){
+
+        if (error) {           
+            console.log(error)
+            res.sendStatus(400);
+        }
+        else
+        {
+            res.redirect('/users');
+        }
+    })
+});
+
 
 
 // TRAILS ROUTES
@@ -196,30 +222,89 @@ app.post('/delete-trail-form', function(req, res){
 });
 
 
-app.get('/trail_types', function(req, res)                 
-    {
-        res.render('trail_types');                   
-    });  
+// TRAIL_TYPES ROUTES
 
-app.get('/inventory_items', function(req, res)                 
-    {
-        res.render('inventory_items');                   
-    }); 
+app.get('/trail_types', function(req, res){
+    let query1 = `SELECT id_trail_type AS ID, trail_type_description AS Description FROM Trail_types;`;
+    
+    db.pool.query(query1, function(error, rows, fields){    
+        res.render('trail_types', {data: rows});                  
+    })                                                      
+});  
 
-app.get('/packing_lists', function(req, res)                 
-    {
-        res.render('packing_lists');                   
-    }); 
+// INVENTORY_ITEMS ROUTES
 
-app.get('/packing_list_details', function(req, res)                 
-    {
-        res.render('packing_lists');                   
-    }); 
+app.get('/inventory_items', function(req, res){
+    let query1 = 
+    `SELECT 
+        id_item AS ID, 
+        item_name AS Name, 
+        item_description AS Description,
+        item_weight AS Weight 
+    FROM Inventory_items;`;
 
-app.get('/hikes', function(req, res)                 
-    {
-        res.render('hikes');                   
-    }); 
+    db.pool.query(query1, function(error, rows, fields){    
+        res.render('inventory_items', {data: rows});                  
+    })               
+}); 
+
+// PACKING_LISTS ROUTES
+
+// app.get('/packing_lists', function(req, res)                 
+//     {
+//         res.render('packing_lists');                   
+//     }); 
+
+app.get('/packing_lists', function(req, res){
+    let query1 = 
+    `SELECT
+        id_packing_list AS ID,
+        Trail_types.trail_type_description AS Description
+    FROM Packing_lists
+    INNER JOIN Trail_types ON Packing_lists.id_trail_type = Trail_types.id_trail_type
+    ORDER BY id_packing_list;`;
+    
+    db.pool.query(query1, function(error, rows, fields){    
+        res.render('packing_lists', {data: rows});                  
+    })                                                      
+});  
+
+app.get('/packing_list_details', function(req, res){
+
+    let query1 = 
+    `SELECT
+        id_packing_list_details AS DetailsID,
+        Inventory_items.item_name AS Item,
+        Packing_lists.id_packing_list AS PackingList
+    FROM Packing_list_details
+    INNER JOIN Inventory_items ON Packing_list_details.id_item = Inventory_items.id_item
+    INNER JOIN Packing_lists ON Packing_list_details.id_packing_list = Packing_lists.id_packing_list;`;
+    
+    db.pool.query(query1, function(error, rows, fields){    
+        res.render('packing_list_details', {data: rows});                  
+    })  
+}); 
+
+app.get('/hikes', function(req, res){
+
+    let query1 = 
+    `SELECT 
+        id_hike AS ID, 
+        Users.first_name AS FirstName,
+        Users.last_name AS LastName,
+        Trails.trail_name AS Trail,   
+        Packing_lists.id_packing_list AS PackingList,
+        hike_date AS Date
+    FROM Hikes 
+    INNER JOIN Users ON Hikes.id_user = Users.id_user
+    INNER JOIN Trails ON Hikes.id_trail = Trails.id_trail
+    INNER JOIN Packing_lists ON Hikes.id_packing_list = Packing_lists.id_packing_list
+    ORDER BY id_hike;`;
+    
+    db.pool.query(query1, function(error, rows, fields){    
+        res.render('hikes', {data: rows});                  
+    })  
+}); 
 
 /*
     LISTENER
