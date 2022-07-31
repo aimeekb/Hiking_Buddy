@@ -1,6 +1,5 @@
 <!-- index.hbs -->
-<h1>This is the Packing Lists Page!</h1>
-<p>Here will be browse, other forms and stuff</p>
+<h1>Packing Lists</h1>
 
 <a href="/">Home</a>|
 <a href="users">Users</a>|
@@ -10,3 +9,32 @@
 <a href="packing_lists">Packing Lists</a> | 
 <a href="packing_list_details">Packing List Details</a> | 
 <a href="hikes">Completed Hikes</a>&nbsp;<br>
+
+<br>
+
+{{!-- Create a table --}}
+<table id = "packing_lists-table">
+
+    {{!-- Header section --}}
+    <thead>
+
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{#each data}}
+        <tr>
+            <td>{{this.ID}}</td>
+            <td>{{this.Description}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
