@@ -1,0 +1,61 @@
+<!-- index.hbs -->
+<h1>Packing Lists</h1>
+<body class="packing_lists">
+<a href="/">Home</a>|
+<a href="users">Users</a>|
+<a href="trails">Trails</a> | 
+<a href="trail_types">Trail Types</a> | 
+<a href="inventory_items">Inventory Items</a> |
+<a href="packing_lists">Packing Lists</a> | 
+<a href="packing_list_details">Packing List Details</a> | 
+<a href="hikes">Completed Hikes</a>&nbsp;<br>
+
+<br>
+
+{{!-- Create a table --}}
+<table class="packing_lists" id = "packing_lists-table">
+
+    {{!-- Header section --}}
+    <thead>
+
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{#each data}}
+        <tr>
+            <td>{{this.ID}}</td>
+            <td>{{this.Description}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<h2>Add Packing List</h2>
+<form class="packing_lists" id="add-packing_lists" method="POST" action="/add-packing_lists">
+    <select name="input-id_trail_type" id="input-id_trail_type">
+        <option value="">Select a Trail type</option>
+        {{#each trail_type_id}}
+        <option value="{{this.id_trail_type}}">{{this.trail_type_description}}</option>
+        {{/each}}
+    </select>
+    <input type="submit">
+</form>
+
+<h2>Delete Packing List</h2>
+<form class="packing_lists" id="delete-packing_lists" method="POST" action="/delete-packing_lists">
+
+    <label for="input-id_packing_list">Packing List ID: </label>
+    <input type="number" name="input-id_packing_list" id="input-id_packing_list">
+
+    <input type="submit">
+</form>
+</body>
