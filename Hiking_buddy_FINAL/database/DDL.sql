@@ -8,23 +8,23 @@ SET AUTOCOMMIT = 0;
 -- Create DB table structure 
 
 CREATE OR REPLACE TABLE Users (
-    id_user INT NOT NULL AUTO_INCREMENT,
+    id_user INT AUTO_INCREMENT,
     email varchar(45),
     first_name varchar(45),
-    last_name varchar(45),
+    last_name varchar(45), 
     user_location varchar(45),
     user_dist_total decimal,
     PRIMARY KEY (id_user)
 );
 
 CREATE OR REPLACE TABLE Trail_types (
-    id_trail_type INT NOT NULL AUTO_INCREMENT,
+    id_trail_type INT AUTO_INCREMENT,
     trail_type_description varchar(45),
     PRIMARY KEY (id_trail_type)
 );
 
 CREATE OR REPLACE TABLE Trails (
-    id_trail INT NOT NULL AUTO_INCREMENT,
+    id_trail INT AUTO_INCREMENT,
     id_trail_type INT,
     trail_name varchar(45),
     trail_location varchar(45),
@@ -35,7 +35,7 @@ CREATE OR REPLACE TABLE Trails (
 );
 
 CREATE OR REPLACE TABLE Inventory_items (
-    id_item INT NOT NULL AUTO_INCREMENT,
+    id_item INT AUTO_INCREMENT,
     item_name varchar(45),
     item_description varchar(45),
     item_weight DECIMAL (3,2),
@@ -43,7 +43,7 @@ CREATE OR REPLACE TABLE Inventory_items (
 );
 
 CREATE OR REPLACE TABLE Packing_lists (
-    id_packing_list INT NOT NULL AUTO_INCREMENT,
+    id_packing_list INT AUTO_INCREMENT,
     id_trail_type INT,
     PRIMARY KEY (id_packing_list),
     FOREIGN KEY (id_trail_type) REFERENCES Trail_types(id_trail_type)
@@ -51,7 +51,7 @@ CREATE OR REPLACE TABLE Packing_lists (
 );
 
 CREATE OR REPLACE TABLE Packing_list_details(
-    id_packing_list_details INT NOT NULL AUTO_INCREMENT,
+    id_packing_list_details INT AUTO_INCREMENT,
     id_item INT,
     id_packing_list INT,
     PRIMARY KEY (id_packing_list_details),
@@ -64,7 +64,7 @@ CREATE OR REPLACE TABLE Packing_list_details(
 );
 
 CREATE OR REPLACE TABLE Hikes(
-    id_hike INT NOT NULL AUTO_INCREMENT,
+    id_hike INT AUTO_INCREMENT,
     id_user INT,
     id_trail INT,
     id_packing_list INT,
@@ -72,7 +72,7 @@ CREATE OR REPLACE TABLE Hikes(
     PRIMARY KEY (id_hike),
     FOREIGN KEY (id_user) REFERENCES Users(id_user) ON DELETE SET NULL,
     FOREIGN KEY (id_trail) REFERENCES Trails(id_trail) ON DELETE SET NULL,
-    FOREIGN KEY (id_packing_list) REFERENCES Packing_lists(id_packing_list) ON DELETE SET NULL
+    FOREIGN KEY (id_packing_list) REFERENCES Packing_lists(id_packing_list) ON DELETE SET NULL 
 );
 
 -- Insert sample data 
