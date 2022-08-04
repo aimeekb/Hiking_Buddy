@@ -37,4 +37,19 @@
         {{/each}}
     </tbody>
 </table>
+
+
+<h2>Add Packing List Line Item</h2>
+<form class="packing_list_details" id="add-packing_list_details" method="POST" action="/add-packing_list_details">
+    <label for="input-id_item">Item: </label>
+    <input type="number" name="input-id_item" id="input-id_item">
+    
+    <label for="input-packing_list_id">Packing List: </label>
+    <input type="number" name="input-packing_list_id" id="input-packing_list_id">
+
+    <input type="submit">
+</form>
+
+
 </body>
+
