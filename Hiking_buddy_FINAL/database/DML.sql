@@ -218,7 +218,8 @@ SELECT
     Packing_lists.id_packing_list
 FROM Packing_list_details
 INNER JOIN Inventory_items ON Packing_list_details.id_item = Inventory_items.id_item
-INNER JOIN Packing_lists ON Packing_list_details.id_packing_list = Packing_lists.id_packing_list;
+INNER JOIN Packing_lists ON Packing_list_details.id_packing_list = Packing_lists.id_packing_list
+ORDER BY id_packing_list_details;
 
 -- CREATE (INSERT)
 SELECT
