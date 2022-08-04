@@ -8,7 +8,7 @@ const app = express();            // We need to instantiate an express object to
 app.use(express.json());
 app.use(express.static('public')); // Using Express to serve images and style.css from the public dir
 app.use(express.urlencoded({extended: true}));
-PORT = 54751;                 // Set a port number at the top so it's easy to change in the future
+PORT = 54755;                 // Set a port number at the top so it's easy to change in the future
 // Database
 var db = require('./database/db-connector');
 
@@ -392,7 +392,8 @@ app.get('/packing_list_details', function(req, res){
         Packing_lists.id_packing_list AS PackingList
     FROM Packing_list_details
     INNER JOIN Inventory_items ON Packing_list_details.id_item = Inventory_items.id_item
-    INNER JOIN Packing_lists ON Packing_list_details.id_packing_list = Packing_lists.id_packing_list;`;
+    INNER JOIN Packing_lists ON Packing_list_details.id_packing_list = Packing_lists.id_packing_list
+    ORDER BY Packing_lists.id_packing_list;`;
     
     db.pool.query(query1, function(error, rows, fields){   
         let data = rows;
@@ -407,6 +408,33 @@ app.get('/packing_list_details', function(req, res){
         }
     }) 
 }); 
+
+app.post('/add-packing_list_details', function(req, res){
+
+    let data = req.body;
+
+    query1 = 
+        `INSERT INTO Packing_list_details(
+            id_item,
+            id_packing_list
+        ) VALUES (
+            '${data['input-id_item']}',
+            '${data['input-packing_list_id']}'
+        );`;
+
+
+    db.pool.query(query1, function(error, rows, fields){
+
+        if (error) {           
+            console.log(error)
+            res.sendStatus(400);
+        }
+        else
+        {
+            res.redirect('/packing_list_details');
+        }
+    })
+});
 
 // COMPLETED HIKES ROUTES
 
