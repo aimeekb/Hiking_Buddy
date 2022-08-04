@@ -64,37 +64,6 @@
 </form>
 
 
-<h2>Update User</h2>
-<form class="users" id="update-user-form" method="POST" action="/update-user-form">
-
-    <label for="input-id_user">ID: </label>
-    <input type="number" name="input-id_user" id="input-id_user">
-    
-    <label for="input-first_name">First Name: </label>
-    <input type="text" name="input-first_name" id="input-first_name">
-
-    <label for="input-last_name">Last Name: </label>
-    <input type="text" name="input-last_name" id="input-last_name">
-    
-    <label for="input-email">email: </label>
-    <input type="text" name="input-email" id="input-email">
-
-    <label for="input-trail_type">Type: </label>
-    <input type="number" name="input-trail_type" id="input-trail_type">
-
-    {{!-- <select name="input-trail_type" id="input-trail_type">
-        <option value="">Select a Trail Type</option>
-        {{#each trail_types}}
-        <option value="{{this.id_trail_type}}">{{this.trail_type_description}}</option>
-        {{/each}}
-    </select> --}}
-
-    <label for="input-trail_distance">"Distance  [10th mi: e.g. xxxx.x]: </label>
-    <input type="text" name="input-trail_distance" id="input-trail_distance">
-
-    <input type="submit">
-</form>
-
 
 <h2>Delete User</h2>
 <form class="users" id="delete-user-form" method="POST" action="/delete-user-form">
