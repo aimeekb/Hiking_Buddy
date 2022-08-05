@@ -112,7 +112,7 @@ app.get('/trails', function(req, res)
             trail_location AS Location, \
             Trail_types.trail_type_description AS Type, \
             trail_distance AS Distance \
-            FROM Trails INNER JOIN Trail_types \
+            FROM Trails LEFT JOIN Trail_types \
         ON Trails.id_trail_type = Trail_types.id_trail_type
         ORDER BY id_trail;`;
         
@@ -316,7 +316,7 @@ app.get('/packing_lists', function(req, res){
         id_packing_list AS ID,
         Trail_types.trail_type_description AS Description
     FROM Packing_lists
-    INNER JOIN Trail_types ON Packing_lists.id_trail_type = Trail_types.id_trail_type
+    LEFT JOIN Trail_types ON Packing_lists.id_trail_type = Trail_types.id_trail_type
     ORDER BY id_packing_list;`;
 
     let query2 =
@@ -391,8 +391,8 @@ app.get('/packing_list_details', function(req, res){
         Inventory_items.item_name AS Item,
         Packing_lists.id_packing_list AS PackingList
     FROM Packing_list_details
-    INNER JOIN Inventory_items ON Packing_list_details.id_item = Inventory_items.id_item
-    INNER JOIN Packing_lists ON Packing_list_details.id_packing_list = Packing_lists.id_packing_list
+    LEFT JOIN Inventory_items ON Packing_list_details.id_item = Inventory_items.id_item
+    LEFT JOIN Packing_lists ON Packing_list_details.id_packing_list = Packing_lists.id_packing_list
     ORDER BY Packing_lists.id_packing_list;`;
     
     db.pool.query(query1, function(error, rows, fields){   
@@ -449,9 +449,9 @@ app.get('/hikes', function(req, res){
         Packing_lists.id_packing_list AS PackingList,
         hike_date AS Date
     FROM Hikes 
-    INNER JOIN Users ON Hikes.id_user = Users.id_user
-    INNER JOIN Trails ON Hikes.id_trail = Trails.id_trail
-    INNER JOIN Packing_lists ON Hikes.id_packing_list = Packing_lists.id_packing_list
+    LEFT JOIN Users ON Hikes.id_user = Users.id_user
+    LEFT JOIN Trails ON Hikes.id_trail = Trails.id_trail
+    LEFT JOIN Packing_lists ON Hikes.id_packing_list = Packing_lists.id_packing_list
     ORDER BY id_hike;`;
 
     let query2 = 
