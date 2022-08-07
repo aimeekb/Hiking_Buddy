@@ -1,0 +1,48 @@
+<h1>Trails Types</h1>
+<body class="trail_types">
+<a href="/">Home</a>|
+<a href="users">Users</a>|
+<a href="trails">Trails</a> | 
+<a href="trail_types">Trail Types</a> | 
+<a href="inventory_items">Inventory Items</a> |
+<a href="packing_lists">Packing Lists</a> | 
+<a href="packing_list_details">Packing List Details</a> | 
+<a href="hikes">Completed Hikes</a>&nbsp;<br>
+
+<br>
+
+{{!-- Create a table --}}
+<table class="trail_types" id = "trail_types-table">
+
+    {{!-- Header section --}}
+    <thead>
+
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{#each data}}
+        <tr>
+            <td>{{this.ID}}</td>
+            <td>{{this.Description}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<h2>Add Trail Type</h2>
+<form class="trail_types" id="add-user-form" method="POST" action="/add-trail_types">
+    <label for="input-trail_type_description">Trail Type Description: </label>
+    <input type="text" name="input-trail_type_description" id="input-trail_type_description">
+    <input type="submit">
+</form>
+
+</body>

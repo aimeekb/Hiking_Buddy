@@ -1,0 +1,57 @@
+<h1>Packing List Details</h1>
+<body class="packing_list_details">
+<a href="/">Home</a>|
+<a href="users">Users</a>|
+<a href="trails">Trails</a> | 
+<a href="trail_types">Trail Types</a> | 
+<a href="inventory_items">Inventory Items</a> |
+<a href="packing_lists">Packing Lists</a> | 
+<a href="packing_list_details">Packing List Details</a> | 
+<a href="hikes">Completed Hikes</a>&nbsp;<br>
+
+{{!-- Create a table --}}
+<table class="packing_list_details" id = "packing_list_details-table">
+
+    {{!-- Header section --}}
+    <thead>
+
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{#each data}}
+        <tr>
+            <td>{{this.DetailsID}}</td>
+            <td>{{this.Item}}</td>
+            <td>{{this.PackingList}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+
+<h2>Add Packing List Line Item</h2>
+<form class="packing_list_details" id="add-packing_list_details" method="POST" action="/add-packing_list_details">
+  <select name="input-id_item" id="input-id_item">
+        <option value="">Select an Item</option>
+        {{#each inventory_items}}
+        <option value="{{this.id_item}}">{{this.item_name}}</option>
+        {{/each}}
+  </select>
+  <select name="input-packing_list_id" id="input-packing_list_id">
+        <option value="">Select a Packing List</option>
+        {{#each data}}
+        <option value="{{this.DetailsID}}">{{this.DetailsID}}</option>
+        {{/each}}
+</select>
+    <input type="submit">
+</form>
+</body>
