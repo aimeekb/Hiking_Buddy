@@ -56,7 +56,7 @@ SELECT
     trail_location,
     Trail_types.trail_type_description, 
     trail_distance 
-FROM Trails INNER JOIN Trail_types ON Trails.id_trail_type = Trail_types.id_trail_type;
+FROM Trails LEFT JOIN Trail_types ON Trails.id_trail_type = Trail_types.id_trail_type;
 
 -- CREATE (INSERT)
 -- query to populate dropdown
@@ -81,7 +81,7 @@ SELECT
     Trail_types.trail_type_description,
     trail_location, 
     trail_distance 
-FROM Trails INNER JOIN Trail_types ON Trails.id_trail_type = Trail_types.id_trail_type
+FROM Trails LEFT JOIN Trail_types ON Trails.id_trail_type = Trail_types.id_trail_type
 WHERE id_trail = :id_trail_selected_from_browse_page;
 
 -- query to populate dropdown
@@ -177,7 +177,7 @@ SELECT
     id_packing_list,
     Trail_types.trail_type_description
 FROM Packing_lists
-INNER JOIN Trail_types ON Packing_lists.id_trail_type = Trail_types.id_trail_type
+LEFT JOIN Trail_types ON Packing_lists.id_trail_type = Trail_types.id_trail_type
 ORDER BY id_packing_list;
 
 
@@ -197,7 +197,7 @@ SELECT
     Packing_lists.id_trail_type,
     Trail_types.trail_type_description
 FROM Packing_lists 
-INNER JOIN Trail_types ON Packing_lists.id_trail_type = Trail_types.id_trail_type
+LEFT JOIN Trail_types ON Packing_lists.id_trail_type = Trail_types.id_trail_type
 WHERE id_packing_list = :id_packing_list_selected_from_browse_page
 ORDER BY id_packing_list
 ;
@@ -217,8 +217,8 @@ SELECT
     Inventory_items.item_name,
     Packing_lists.id_packing_list
 FROM Packing_list_details
-INNER JOIN Inventory_items ON Packing_list_details.id_item = Inventory_items.id_item
-INNER JOIN Packing_lists ON Packing_list_details.id_packing_list = Packing_lists.id_packing_list
+LEFT JOIN Inventory_items ON Packing_list_details.id_item = Inventory_items.id_item
+LEFT JOIN Packing_lists ON Packing_list_details.id_packing_list = Packing_lists.id_packing_list
 ORDER BY id_packing_list_details;
 
 -- CREATE (INSERT)
@@ -227,8 +227,8 @@ SELECT
     Inventory_items.item_name,
     Packing_lists.id_packing_list
 FROM Packing_list_details
-INNER JOIN Inventory_items ON Packing_list_details.id_item = Inventory_items.id_item
-INNER JOIN Packing_lists ON Packing_list_details.id_packing_list = Packing_lists.id_packing_list
+LEFT JOIN Inventory_items ON Packing_list_details.id_item = Inventory_items.id_item
+LEFT JOIN Packing_lists ON Packing_list_details.id_packing_list = Packing_lists.id_packing_list
 WHERE id_packing_list_details = :id_packing_list_details_selected_from_browse_page; 
 
 INSERT INTO Packing_list_details(
@@ -258,9 +258,9 @@ SELECT
     Packing_lists.id_packing_list,
     hike_date
 FROM Hikes 
-INNER JOIN Users ON Hikes.id_user = Users.id_user
-INNER JOIN Trails ON Hikes.id_trail = Trails.id_trail
-INNER JOIN Packing_lists ON Hikes.id_packing_list = Packing_lists.id_packing_list
+LEFT JOIN Users ON Hikes.id_user = Users.id_user 
+LEFT JOIN Trails ON Hikes.id_trail = Trails.id_trail
+LEFT JOIN Packing_lists ON Hikes.id_packing_list = Packing_lists.id_packing_list
 ORDER BY id_hike
 ;
 
@@ -270,7 +270,7 @@ SELECT id_user, first_name, last_name FROM Users;
 SELECT id_trail, trail_name FROM Trails;
 SELECT id_packing_list, Trail_types.trail_type_description 
     FROM Packing_lists
-    INNER JOIN Trail_types ON Packing_lists.id_trail_type = Trail_types.id_trail_type;
+    LEFT JOIN Trail_types ON Packing_lists.id_trail_type = Trail_types.id_trail_type;
 
 INSERT INTO Hikes(
     id_user,
@@ -286,19 +286,6 @@ INSERT INTO Hikes(
 
 
 -- UPDATE
-SELECT 
-    id_hike, 
-    Users.first_name,
-    Users.last_name,
-    Trails.trail_name,   
-    Packing_lists.id_packing_list,
-    hike_date
-FROM Hikes 
-INNER JOIN Users ON Hikes.id_user = Users.id_user
-INNER JOIN Trails ON Hikes.id_trail = Trails.id_trail
-INNER JOIN Packing_lists ON Hikes.id_packing_list = Packing_lists.id_packing_list
-WHERE id_hike =:id_hike_selected_from_browse_page;
-;
 
 -- for the actual update
 UPDATE Hikes SET 
