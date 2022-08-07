@@ -1,0 +1,57 @@
+<h1>Inventory Items</h1>
+<body class="inventory_items">
+<a href="/">Home</a>|
+<a href="users">Users</a>|
+<a href="trails">Trails</a> | 
+<a href="trail_types">Trail Types</a> | 
+<a href="inventory_items">Inventory Items</a> |
+<a href="packing_lists">Packing Lists</a> | 
+<a href="packing_list_details">Packing List Details</a> | 
+<a href="hikes">Completed Hikes</a>&nbsp;<br>
+
+<br>
+
+{{!-- Create a table --}}
+<table class="inventory_items" id = "inventory_items-table">
+
+    {{!-- Header section --}}
+    <thead>
+
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{#each data}}
+        <tr>
+            <td>{{this.ID}}</td>
+            <td>{{this.Name}}</td>
+            <td>{{this.Description}}</td>
+            <td>{{this.Weight}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<h2>Add Inventory Item</h2>
+<form class="inventory_items" id="add-inventory_items" method="POST" action="/add-inventory_items">
+    <label for="input-item_name">Item Name: </label>
+    <input type="text" name="input-item_name" id="input-item_name">
+    
+    <label for="input-item_description">Item Description: </label>
+    <input type="text" name="input-item_description" id="input-item_description">
+
+    <label for="input-item_weight">Item Weight: </label>
+    <input type="text" name="input-item_weight" id="input-item_weight">
+
+    <input type="submit">
+</form>
+
+</body>
